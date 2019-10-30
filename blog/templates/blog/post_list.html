@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for post in post_list %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class='post'>
+              <h1 class="loader"><a href="{% url 'blog:post_detail' pk=post.pk%}">{{ post.title}}</a></h1>
+          </div>
+          <div class='date'>
+          {% if post.date_published %}
+              <p>Published on: {{ post.date_published }} by {{ post.author }}</p>
+          {% else %}
+              <p>Created on: {{ post.date_created|date:"D M Y"}}</p>
+          {% endif %}
+          </div>
+          <a href="{% url 'blog:post_detail' pk=post.pk %}">Comment: {{ post.approve_comment.count }}</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    {% endfor %}
+{% endblock %}

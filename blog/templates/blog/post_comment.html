@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form class='post-form' method='post'>
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type='submit' class='save btn btn-secondary' value='Post Comment' />
+    </form>
+    <script> var editor = new MediumeEditor('.editable');</script>
+{% endblock %}
